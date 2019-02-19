@@ -1,3 +1,8 @@
+require 'pry'
+puts "first"
+
+
+
 def game_hash
   {
     home: {
@@ -116,3 +121,40 @@ def game_hash
     }
   }
 end
+
+def get_all_players
+  binding.pry
+end
+
+def num_points_scored(player_name)
+  # get a list of all the players
+  # look through all of the players
+  all_players = get_all_players
+  binding.pry
+  # find the one where the name matches the player_name argument
+
+  # return that players points
+end
+
+
+
+
+my_arr = [1,2,3,4,5]
+
+def square_all(arr)
+
+  arr.map do |n|
+    n * n
+  end
+
+end
+
+
+
+# define a method called get_instructor_names
+# it will be given: [{hometown: 'upstate ny', name: 'alex'}, {hometown: 'Siberia', name: 'Steven'}, {hometown: 'Ohio', name: 'Vicky'}]
+# it will return ['alex', 'Steven', 'Vicky']
+
+binding.pry
+
+puts "last"
