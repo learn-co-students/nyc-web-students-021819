@@ -123,17 +123,20 @@ def game_hash
 end
 
 def get_all_players
-  binding.pry
+  game_hash.values.map do |team|
+    team[:players]
+  end.flatten
 end
 
 def num_points_scored(player_name)
   # get a list of all the players
-  # look through all of the players
   all_players = get_all_players
-  binding.pry
+  # look through all of the players
   # find the one where the name matches the player_name argument
+  all_players.find do |player|
+    player[:player_name] == player_name
+  end[:points]
 
-  # return that players points
 end
 
 
@@ -152,9 +155,34 @@ end
 
 
 # define a method called get_instructor_names
-# it will be given: [{hometown: 'upstate ny', name: 'alex'}, {hometown: 'Siberia', name: 'Steven'}, {hometown: 'Ohio', name: 'Vicky'}]
+# it will be given:
+# [{hometown: 'upstate ny', name: 'alex'}, {hometown: 'Siberia', name: 'Steven'}, {hometown: 'Ohio', name: 'Vicky'}]
 # it will return ['alex', 'Steven', 'Vicky']
 
-binding.pry
+# When to use map:
+# you have an array of n things
+# and want back n things, each one transformed in some way
+
+# When to use  select
+# you have an array of n things
+# you want back some selection, some subset of those things that pass a test
+
+# When to use  find
+# you have an array of n things
+# you want back the first thing that passes the test
+
+
+
+def get_instructor_names(instructors)
+  instructors.map do |instructor|
+    instructor[:name]
+  end
+end
+
+instructors = [{hometown: 'upstate ny', name: 'alex'}, {hometown: 'Siberia', name: 'Steven'}, {hometown: 'Ohio', name: 'Vicky'}]
+
+names = get_instructor_names(instructors)
+
+# binding.pry
 
 puts "last"
