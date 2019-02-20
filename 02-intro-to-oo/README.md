@@ -3,6 +3,8 @@ Intro to Object Orientation
 
 aka: Object Oriented Programming (OOP)
 
+adding some new stuff
+
 
 ## Lecture Notes
 
