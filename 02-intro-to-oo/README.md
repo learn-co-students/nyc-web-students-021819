@@ -6,10 +6,25 @@ aka: Object Oriented Programming (OOP)
 
 ## Lecture Notes
 
-# What is an object
-*
+Everything is an Object
 
-*
+Strings,
+
+Behavior
+think about all the things i can do to a String
+operate on an object, operate differently different data types
+
+State
+data that makes something properties that a string has
+
+
+
+# What is an object?
+* Encapuslates behavior
+
+* Encapsulates state
+
+behavior + state together
 
 Does the following meet those properties?
 
