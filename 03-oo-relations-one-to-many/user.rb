@@ -14,7 +14,9 @@ class User
     #look through a list of all of the tweets
     # choose the ones that belong to myself
     # and return those ones
-    binding.pry
+    Tweet.all.select do |tweet|
+      tweet.user == self
+    end
   end
 
   def post_tweet(message)
