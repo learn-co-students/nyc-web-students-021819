@@ -12,3 +12,6 @@ class Project
    end
 
 end
+
+
+# Project.new('hoverboard', 100)

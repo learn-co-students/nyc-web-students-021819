@@ -17,6 +17,9 @@ class User
     Tweet.all.select do |tweet|
       tweet.user == self
     end
+    # Appointment.all.select do |appointment|
+    #   appointment.doctor == self
+    # end
   end
 
   def post_tweet(message)
