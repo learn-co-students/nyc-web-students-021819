@@ -46,9 +46,9 @@ Build out the following methods on the **Venue** class:
 + Venue.find_by_location(location)
   + given a string of a location, returns all venues that match that location
 + Venue.find_by_name(name)
-  + given a string of a location, returns the venue with that name
+  + given a string of a venue name, returns the venue with that name
 + Venue#concert_dates
-  + returns a list of the concert dates for a specific venue
+  + returns a list of unique concert dates for a specific venue
 + Venue#bands
   + returns a list of unique bands for a specific venue
 + Venue#average_attendance
