@@ -1,10 +1,12 @@
 require_relative 'spec_helper.rb'
 
+
 describe Cat do
 
   let(:cat) { Cat.new("crookshanks") }
 
   it "can initialize a cat" do
+    binding.pry
     expect(cat).to be_a(Cat)
   end
 

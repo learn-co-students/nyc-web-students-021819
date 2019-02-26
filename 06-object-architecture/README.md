@@ -1,10 +1,36 @@
 # Lecture Notes
 
 # DRY
+Don't Repeat Yourself
 
 
-
+Duplicating ourselves
+# Reuse code
 ## What strategies for code reuse have we seen thus far
+methods -> get_all_players
+variables
+
+classes -> make as many Books as I want
+
+
+
+# Namespacing
+
+# ActiveRecord
+# Sinatra
+
+module Sinatra
+  class Base
+  end
+end
+
+module ActiveRecord
+  class Base
+  end
+end
+
+class Dog < ActiveRecord::Base
+end
 
 # My Pets
 
