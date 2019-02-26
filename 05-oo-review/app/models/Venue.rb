@@ -47,6 +47,7 @@ class Venue
   end
 
   def average_attendance
+    # another way to do this:
     # attendances = concerts.map do |concert|
     #   concert.attendance
     # end

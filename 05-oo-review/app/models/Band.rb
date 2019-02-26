@@ -22,7 +22,7 @@ class Band
   def venues
     self.concerts.map do |concert|
       concert.venue
-    end
+    end.uniq
   end
 
   def add_concert(date, venue)
