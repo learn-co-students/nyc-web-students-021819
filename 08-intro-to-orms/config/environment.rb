@@ -7,9 +7,10 @@ DB = {
 }
 
 
+
 DB[:conn].results_as_hash = true
 
-sql = <<SQL
+sql = <<-SQL
   CREATE TABLE
   IF NOT EXISTS tweets
   (
