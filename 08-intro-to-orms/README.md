@@ -37,9 +37,30 @@ Draw out what your schema (structure of your tables and columns) would be for th
 
 1. Books and Authors where each book has a single author. Books should have a title and authors should have a name
 
-Q: Write the SQL to find all books written by a certain author given the author's id.
-Q: Write the SQL to find all books written by a certain author given the author's name.
 
+book belongs_to an author
+books
+id | title                  | author_id
+10   "POODR"                      2
+12  "99 Bottles of OOP"           2
+13  "Secrets of the JS Ninja"     1
+
+author has_many books
+authors
+id | name         |
+1    "John Resig"    
+2   "Sandi Metz"     
+
+
+Q: Write the SQL to find all books written by a certain author given the author's id.
+5
+SELECT * FROM books WHERE author_id = 5
+
+Q: Write the SQL to find all books written by a certain author given the author's name.
+SELECT * FROM books
+JOIN authors
+ON authors.id = books.author_id
+WHERE author_id = 5
 
 
 2. Books and Authors where each book can have one or multiple authors. Books should have a title and authors should have a name
