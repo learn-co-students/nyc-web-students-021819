@@ -5,6 +5,7 @@
 
 
 ## Active Record Pattern
+Let's do this Tomorrow
 
 # CRUD REVIEW
 What are the four ways we can interact with data?
@@ -47,7 +48,7 @@ Q: Write the SQL to find all books written by a certain author given the author'
 Q: Write the SQL to find all books written by a certain author given their name
 
 
-3. Twitter where Tweets can have Tags (i.e. '#fun', '#hottake', '#tbt'). A tweet can have multiple tags, many tweets can be tagged with the same tag. Tweets have a message and user_id; tags have a name.
+3. Twitter where Tweets can have Tags (i.e. '#fun', '#learnlovecode', '#tbt'). A tweet can have multiple tags, many tweets can be tagged with the same tag. Tweets have a message and user_id; tags have a name.
 
 
 Q: Write the SQL to find all the tweets tagged '#tbt'

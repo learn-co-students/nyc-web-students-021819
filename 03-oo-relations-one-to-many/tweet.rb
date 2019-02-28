@@ -18,6 +18,7 @@ class Tweet
   end
 
   def self.all
+    "SELECT * FROM tweets"
     @@all
   end
 

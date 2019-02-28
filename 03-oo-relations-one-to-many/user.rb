@@ -23,7 +23,8 @@ class User
   end
 
   def post_tweet(message)
-    new_tweet = Tweet.new(message, self)
+    | id | message | user_id
+    Tweet.new(message, self)
     # @tweets << new_tweet
   end
 end
