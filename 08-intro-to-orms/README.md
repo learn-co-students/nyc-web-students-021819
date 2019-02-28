@@ -2,6 +2,12 @@
 
 + Definition:
 
+Object Oriented Programming (Ruby)
+
+Relational (SQL)
+
+
+
 
 
 ## Active Record Pattern
