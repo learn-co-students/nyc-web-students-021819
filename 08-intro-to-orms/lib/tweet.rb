@@ -10,7 +10,13 @@ class Tweet
   def self.all
     sql = "SELECT * FROM tweets"
     results = DB[:conn].execute(sql)
-    binding.pry
+    # binding.pry
+
+    results.map do |row|
+      # binding.pry
+      # Tweet.new({"message" => row["message"], "user_id" => row["user_id"]})
+      Tweet.new(row)
+    end
 
     # results is an array of hashes,
     # i want this method to return an array of Tweet instances
@@ -22,10 +28,29 @@ class Tweet
   def initialize(attributes={})
     @message = attributes['message']
     @user_id = attributes['user_id']
+
+    @id = attributes['id']
   end
 
   def save
-    # self.class.all << self
+
+    # if persisted?
+      # update it
+    # else (its brand new)
+    # do the stuff below
+    sql = <<-SQL
+      INSERT INTO tweets
+      (user_id, message)
+      VALUES (?, ?)
+    SQL
+
+    # binding.pry
+
+    DB[:conn].execute(sql, self.user_id, self.message)
+  end
+
+  def persisted?
+    !!self.id
   end
 
 end
