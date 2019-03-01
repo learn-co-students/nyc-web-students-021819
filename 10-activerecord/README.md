@@ -1,5 +1,16 @@
 Active Record
 ======================
+
+
+SQL
+Squirrel-Based Learning
+
+# Create a new Migration to add an integer column to the acorns table
+
+
+@# Mass Assignment
+when we initialize an object with a Hash, and call the key= method for each attribute
+
 ## Lecture Notes
 
 ### Rake and File Structure

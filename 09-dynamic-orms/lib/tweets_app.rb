@@ -5,12 +5,12 @@ class TweetsApp
 
     puts 'Enter a username:'
     username = gets.chomp
-    User.find_or_create_by(username: username)
+    user = User.find_or_create_by(username: username)
 
     puts 'Enter a message:'
     message = gets.chomp
 
-    tweet = Tweet.new({'user_id' => user_id, 'message' => message})
+    tweet = Tweet.new({'user_id' => user.id, 'message' => message})
     tweet.save
 
     tweets = Tweet.all
