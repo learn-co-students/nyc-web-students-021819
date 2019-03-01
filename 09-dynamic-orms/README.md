@@ -15,6 +15,6 @@ Relational Databases
 
 
 SQL WORLD <> RUBY WORLD
-* Tables <> ?
-* Rows (Records) <> ?
-* Columns <> ?
+* Tables <> Classes
+* Rows (Records) <> Instances
+* Columns <> Attributes / Properties
