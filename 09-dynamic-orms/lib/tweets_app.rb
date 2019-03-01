@@ -4,7 +4,8 @@ class TweetsApp
     puts 'Welcome to Twitter'
 
     puts 'Enter a username:'
-    user_id= gets.chomp
+    username = gets.chomp
+    User.find_or_create_by(username: username)
 
     puts 'Enter a message:'
     message = gets.chomp
@@ -20,7 +21,7 @@ class TweetsApp
 
   def render(tweets)
     tweets.each.with_index(1) do |tweet, i|
-      puts "#{i}. User #{tweet.user_id} says: #{tweet.message}"
+      puts "#{i}. User #{tweet.user.username} says: #{tweet.message}"
     end
   end
 end

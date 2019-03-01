@@ -9,6 +9,11 @@ We should be able to
 ## Active Record Pattern
 ORM
 
+Object Relational Mapper
+OO Programming
+Relational Databases
+
+
 SQL WORLD <> RUBY WORLD
 * Tables <> ?
 * Rows (Records) <> ?
