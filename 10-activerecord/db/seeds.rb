@@ -1,27 +1,24 @@
-# puts "hello"
-# squirrel1 = Squirrel.create(name: 'squirrely')
-# Squirrel.create(name: 'rocky')
-# Squirrel.create(name: 'scrappy')
-# Squirrel.create(name: 'scooby')
+url = "https://www.googleapis.com/books/v1/volumes?q=fiction"
+response = RestClient.get(url)
+
+# this is a string
+response_string = response.body
+
+# turn this string into a hash
+results = JSON.parse(response_string)
+
+books = results["items"]
 
 
-data = {
-  "squirrels": [
-    {
-      "name": "scooby"
-      "weight": "10"
-    },
-    {
-      "name": "whatever",
-      "weight": "12"
-    },
-    {
-      "name": "scrappy",
-      "weight": 13
-    },
-  ]
-}
+books.each do |book|
 
-data["squirrels"].each do |squ_data|
-  Squirell.find_or_create_by(name: squ_data["name"])
+ title = book["volumeInfo"]["title"]
+ authors = book["volumeInfo"]["authors"]
+ description = book["volumeInfo"]["description"]
+
+ # Create some booke objects. Add the to the Database
+ Book.create(title: title, description: description)
+
+
+
 end

@@ -4,6 +4,7 @@ puts "first"
 
 
 def game_hash
+  # "home_team players are a, b, c"
   {
     home: {
       team_name: "Brooklyn Nets",
