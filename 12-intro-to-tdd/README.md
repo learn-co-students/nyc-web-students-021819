@@ -32,3 +32,8 @@ Phases of a test (follow a narrative)
 - implementation details
 - private methods
 - library code (ActiveRecord associations, JSON.parse)
+
+class Song < ActiveRecord::Base
+  belongs_to :artist
+
+  end
