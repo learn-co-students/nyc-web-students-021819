@@ -1,0 +1,11 @@
+<h1>🍣EDIT🍣</h1>
+<form action="/sushis/<%= @sushi.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="sushi[name]">Name</label>
+  <input type="text" name="sushi[name]" value="<%= @sushi.name %>"><br>
+  <label for="sushi[name]">Price</label>
+  <input type="number" name="sushi[price]" step="0.01" value="<%= @sushi.price %>"><br>
+  <label for="sushi[image]">Image URL</label>
+  <input type="text" name="sushi[image]" value="<%= @sushi.image %>"><br>
+  <input type="submit">
+</form>
