@@ -1,0 +1,9 @@
+<h1>🍣SHOW🍣</h1>
+<h2><%= @sushi.name %></h2>
+<h4><%= @sushi.price %></h4>
+<img style="max-width: 300px;" src="<%= @sushi.image %>" alt="<%= @sushi.name %>">
+
+<form action="/sushis/<%= @sushi.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>

@@ -1,0 +1,21 @@
+<h1>🍣INDEX🍣</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sushis.each do |sushi| %>
+      <tr>
+        <td><a href="/sushis/<%= sushi.id %>"><%= sushi.name %><a></td>
+        <td>$ <%= '%.2f' % sushi.price %></td>
+        <td>
+          <a href="/sushis/<%= sushi.id %>/edit">Edit</a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
