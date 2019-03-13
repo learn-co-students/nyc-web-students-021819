@@ -1,0 +1,9 @@
+<h1>EDIT THAT FORM!</h1>
+
+<form class="" action="/fakeholidays/<%= @holiday.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="text" name="holiday[name]" value="<%= @holiday.name %>">
+  <input type="text" name="holiday[date]" value="<%= @holiday.date %>">
+  <input type="text" name="holiday[fun]" value="<%= @holiday.fun %>">
+  <input type="submit">
+</form>
