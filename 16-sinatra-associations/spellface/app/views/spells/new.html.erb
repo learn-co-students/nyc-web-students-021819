@@ -1,0 +1,15 @@
+<h1>MAKE NEW SPELLZZZ 🌙</h1>
+
+
+<form class="" action="/spells" method="post">
+  <label for="name">SPELL NAME:</label>
+  <input type="text" name="spell[name]" value=""><br/>
+  <label for="Element">Element: </label>
+  <input type="text" name="spell[element]" value=""> <br/>
+  <select name="spell[wizard_id]">
+    <% @wizards.each do |wiz| %>
+      <option value="<% wiz.id %>"><%= wiz.name %></option>
+    <% end %>
+  </select>
+  <input type="submit">
+</form>
