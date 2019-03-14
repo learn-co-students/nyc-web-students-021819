@@ -1,0 +1,11 @@
+<h1>ALL MY COOL VEHICLES</h1>
+<ul>
+  <% @vehicles.each do |vehicle| %>
+      <li>
+        <%= link_to vehicle.name, vehicle %>
+      </li>
+  <% end %>
+</ul>
+
+<h3>HERE'S THE VEHICLE WITH THE LONGEST NAME</h3>
+<%= @longest_name.name %>

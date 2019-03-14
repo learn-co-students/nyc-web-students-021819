@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sentience: false
+  lights: 1
+  veh_type: MyString
+  plate_number: MyString
+  name: MyString
+
+two:
+  sentience: false
+  lights: 1
+  veh_type: MyString
+  plate_number: MyString
+  name: MyString
