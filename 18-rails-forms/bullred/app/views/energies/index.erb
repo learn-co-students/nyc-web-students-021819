@@ -1,0 +1,7 @@
+<h1> hm</h1>
+
+
+<% @energies.each do |e|  %>
+  <p><%= e.color %></p>
+  <%= link_to "WHATS ON THE PAGE", energy_path(e) %>
+<% end %>
