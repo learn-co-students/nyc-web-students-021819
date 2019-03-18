@@ -1,0 +1,7 @@
+<h1> lil index action</h1>
+
+
+<% @toids.each do |t| %>
+  <%= link_to(t.flavor, "/toids/#{t.id}", {method: :delete}) %>
+  <%= button_to "GET RID OF THIS toid,trash", toid_path(t), {method: :delete, data: {confirm: "Are you sure?"} } %>
+<% end %>

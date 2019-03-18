@@ -1,0 +1,13 @@
+<h1> NEW TOID ! ☠︎</h1>
+
+
+<%= form_for @toid do |f| %>
+  <%= f.label :curious %>
+  <%= f.check_box :curious %>
+  <%= f.label :flavor %>
+  <%= f.text_field :flavor %>
+  <%= f.label :student_id %>
+
+  <%= f.collection_select(:student_id, Student.all, :id, :street_name, prompt: true) %>
+  <%= f.submit %>
+<% end %>

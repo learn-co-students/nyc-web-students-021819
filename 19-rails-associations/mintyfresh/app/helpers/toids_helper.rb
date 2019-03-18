@@ -1,0 +1,2 @@
+module ToidsHelper
+end

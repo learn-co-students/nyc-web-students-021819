@@ -1,0 +1,8 @@
+<h1> student deets</h1>
+
+<p><%= @student.street_name %></p>
+
+<p> THESE ARE MY MINTS:</p>
+  <% @student.toids.each do |mintyobj| %>
+    <%= link_to mintyobj.flavor, datoy_path(mintyobj) %>
+  <% end %>
