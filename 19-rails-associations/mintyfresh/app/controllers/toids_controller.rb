@@ -22,7 +22,9 @@ class ToidsController < ApplicationController
   def new
     # model
     @toid = Toid.new
+    @stuents = Student.all
     #response
+
     render :new
   end
 
@@ -35,10 +37,15 @@ class ToidsController < ApplicationController
   end
 
   # delete '/toids/:id'
-  def destroy
+  def give_evans_the_toids
     #model
     @toid = Toid.find(params[:id])
-    @toid.destroy
+    evans_toid = Toid.find_by(street_name: "yaboi")
+    if @toid.student == []
+      @toid.destroy
+    else
+      @toid.update_attribute(student_id: evans_toid.id)
+      @toid.destroy
     #response
     redirect_to toids_path
   end

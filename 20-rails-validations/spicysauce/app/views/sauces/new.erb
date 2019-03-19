@@ -1,0 +1,19 @@
+<p> make a new sauce ™️</p>
+
+<ol>
+  <% if flash[:you_done_goofed] %>
+    <% flash[:you_done_goofed].each do |err| %>
+      <li> <%= err %> </li>
+    <% end %>
+  <% end %>
+</ol>
+
+<%= form_for @sauce do |f| %>
+  <%= f.label :flavor %>
+  <%= f.text_field :flavor %> </br>
+  <%= f.label :brand %>
+  <%= f.text_field :brand %></br>
+  <%= f.label :heat %>
+  <%= f.number_field :heat %></br>
+  <%= f.submit %>
+<% end %>
