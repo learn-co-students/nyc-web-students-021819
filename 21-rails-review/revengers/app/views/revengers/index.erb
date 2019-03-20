@@ -1,0 +1,12 @@
+<h1> YEET</h1>
+
+  <p> OR make a new one :)</p>
+  <%= link_to "NEWWWWW revenger 😈", new_revenger_path%>
+
+<ol>
+<% @revengers.each do |r| %>
+  <%= link_to r.alias, revenger_path(r) %>
+  <%= button_to "vanquish", "/revengers/#{r.id}", {method: :delete} %>
+  <%= button_to "upgrade #{r.alias}", "/revengers/#{r.id}/edit", {method: :get} %>
+<% end %>
+</ol>

@@ -1,0 +1,25 @@
+<ol>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |err| %>
+        <li><%= err %></li>
+    <% end %>
+  <% end %>
+</ol>
+
+<%= form_for @revenger do |f| %>
+  <%= f.label :alias %>
+  <%= f.text_field :alias %>
+  <%= f.label :planet %>
+  <%= f.text_field :planet %>
+  <%= f.label "orgz" %>
+  <!-- 1. object for the collection select WITH the f. first arg is going to be from the form_for
+    2. KEY in the params -- what you want in the params[:2ndarg]
+    3. Iterate over what???
+    4. VALUE in the params this is a method call
+    5. WHAT WILL THE USER SEEEEEEEE?? psst also method call
+    6. optional argument prompt: true
+  -->
+
+  <%= f.collection_select(:organization_id, @orgz, :id, :name)%>
+  <%= f.submit %>
+<% end %>
