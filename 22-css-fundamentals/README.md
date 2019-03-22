@@ -12,7 +12,8 @@
 
 ## CSS Basics
 
-CSS -
+CSS - Cascading Style Sheets
+Styles things, makes things look pretty
 
 ## Stylesheets and Selectors
 
