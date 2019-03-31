@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookSearcher</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="ui inverted teal menu">
+      <a class='item' href="/books">
+        <h2 class="ui header">
+          <i class="search icon"></i>
+          <div class="content">
+            Book Searchr
+          </div>
+          <div class="sub header">
+            The app that searches for books
+          </div>
+        </h2>
+      </a>
+    </div>
+    <div class='ui centered grid'>
+
+      <div class='one wide column'></div>
+
+      <!-- form  -->
+      <div class='seven wide column'>
+        <%= form_tag '/books', method: :get, class: 'ui form' do %>
+          <div class="field">
+            <label>Search Books</label>
+            <%= text_field_tag :search, nil, placeholder: 'Enter search term' %>
+          </div>
+          <%= submit_tag 'Search Books', class: 'ui blue button' %>
+        <% end %>
+      </div>
+
+      <%= yield %>
+
+      <div class='one wide column'></div>
+    </div>
+
+  </body>
+</html>

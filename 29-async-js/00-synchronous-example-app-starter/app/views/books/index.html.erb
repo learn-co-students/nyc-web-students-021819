@@ -1,0 +1,17 @@
+<div class='seven wide column'>
+  <div class="ui relaxed divided list">
+
+    <% @books.each do |book| %>
+      <div class="item">
+        <i class="large book middle aligned icon"></i>
+        <div class="content">
+          <%= link_to book.title, book_path(book), class: 'header' %>
+          <div class="description">
+            <%= book.author.name %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .pass {
+        color: green;
+        font-weight: bold;
+      }
+      .fail {
+        color: red;
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Hello</h1>
+    <ul class='results'>
+    </ul>
+    <script>
+      function assert(description, val) {
+        var ul = document.querySelector('.results')
+        var li = document.createElement('li')
+        li.innerText = description
+        li.className = val ? 'pass' : 'fail'
+        ul.appendChild(li)
+      }
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>
