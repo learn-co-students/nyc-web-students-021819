@@ -1,11 +1,15 @@
-// Write your solution here!
-const drivers = ["Milo", "Otis", "Garfield"]
+console.log('IN INDEX')
 
-console.log('hi');
+const drivers =  ["Milo", "Otis", "Garfield"]
 
-function appendDriver(name) {
+const destructivelyAppendDriver = function(name) {
   console.log('name is:', name);
-  // debugger
+  drivers.push(name)
+}
 
+const appendDriver = function(name) {
+  // const newArray = drivers.slice()
+  // newArray.push(name)
+  // return newArray
   return [...drivers, name]
 }

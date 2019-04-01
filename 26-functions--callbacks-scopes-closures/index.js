@@ -1,128 +1,89 @@
-const assert = function (description, callback) {
-  console.log('callback is?', callback);
-  var resultsList = document.querySelector('.results')
-  var li = document.createElement('li')
-  li.className = callback() ? 'pass' : 'fail'
+const assert = function (description, value) {
+  const ul = document.querySelector('ul#results')
+  const li = document.createElement('li')
+  li.className = value ? 'pass' : 'fail'
   li.innerText = description
-  resultsList.appendChild(li)
+  ul.appendChild(li)
 }
 
-const addition = (a, b) => {
-  return a + b
+console.log('in index.js')
+
+assert('JS does basic math', 1 + 1 == 2)
+assert('JS has the double equals equality operator', 2 == 2)
+assert('JS double equals equality operator coerces type', 2 == '2')
+assert('JS triple equals equality operator coerces type', 2 !== '2')
+
+assert('the && operator', !(true && false))
+assert('the || operator',  true || false)
+assert('the && operation evaluates to the value of the expression', "ponies" || true)
+//
+// var name = 'alex'
+// assert('JS has string templating', `Hello, ${name}` === "Hello, alex")
+
+function name() {
+  return "ian"
+}
+
+assert('In a JS function you need an explicit return', name() === 'ian')
+
+assert('JS has string templating', `Hello, ${name()}` === "Hello, ian")
+
+var firstName
+console.log('firstName is:', firstName);
+
+assert('a newly declared variable is undefined. undefined is a falsey value', !firstName)
+
+
+var arr = []
+assert("JS has arrays", Array.isArray(arr))
+
+var obj = {}
+assert("JS has objects", typeof obj === "object")
+
+var obj = {name: 'vicky'}
+assert(
+  "We can use dot notation to access the value at a certain key of a JS object",
+  obj.name === 'vicky'
+)
+
+var obj = {name: 'vicky'}
+assert(
+  "We can use bracket notation to access the value at a certain key of a JS object",
+  obj["name"] === 'vicky'
+)
+
+const key = "name"
+
+assert(
+  "We can use bracket notation to access the value at a certain key of a JS object and the value in the brackets will be evaluated as JS",
+  obj[key] === 'vicky'
+)
+
+
+var katzDeliLine = []
+
+function takeANumber(name) {
+  katzDeliLine.push(name)
+  return katzDeliLine.length
 }
 
 
-function expect(value) {
-  // this should return an object
-  console.log('value is', value);
-  return {
-    toEqual: function(expectedValue) {
-       return value === expectedValue
-    }
+assert ('takeANumber returns the new length of the line', takeANumber('Mica') === 1)
+
+takeANumber('Nicky')
+
+function showLine() {
+  var results = "The line is currently: "
+
+  // for(where to start counting; when to stop; how to count)
+  for(let i = 0; i < katzDeliLine.length; i++) {
+    const name = katzDeliLine[i]
+    results += `${i + 1}. ${name}, `
   }
+
+  // console.log(name)
+
+  return results
 }
 
-// assert(
-//   'This is a failing test',
-//   function(){
-//     return false
-//   }
-// )
-assert('My addition fn adds two numbers', function(){
-  let sum = addition(5, 3)
-
-
-  return expect(sum).toEqual(8)
-})
-
-assert('My addition fn adds two numbers', function(){
-  let sum = addition(5, 3)
-
-
-  return expect(sum).toEqual(10)
-})
-
-// // practice.js
-// // PROBLEM 1
-// // PROBLEM 2
-//
-// // rewrite the assert function so that the second argument is a callback function
-// // that returns true or false
-//
-// // practice.js
-// // PROBLEM 3
-//
-// let numbers = [1,2,3,4,5]
-//
-// function myMap(arr, callback) {
-//   let results = []
-//   console.log('callback is', callback);
-//   arr.forEach(function(n) {
-//     results.push(callback(n))
-//   })
-//
-//   return results
-// }
-//
-// // myMap(numbers, function(n){ return n * 2 })
-// function doubleNum(n){
-//   return n * 2
-// }
-// myMap(numbers, doubleNum)
-//
-//
-//
-//
-// // let num = null
-// // assert('null is a falsey value', !num)
-//
-// assert('JS has numbers', function(){
-//   let num = 7
-//   return typeof num === 'number'
-// })
-//
-// num = 7.00001
-// assert('JS has floats', typeof num === 'number')
-//
-// var obj = {}
-// assert('JS has objects', typeof obj === 'object')
-//
-// var obj = {name: 'charlie'}
-// assert('We can use dot notation with objects', obj.name === 'charlie')
-//
-// var obj = {name: 'charlie'}
-// assert('We can use bracket notation with objects', obj['name'] === 'charlie')
-//
-// var obj = {name: 'charlie'}
-// var key = 'name'
-// assert('We can use bracket notation with objects', obj[key] === 'charlie')
-//
-// var katzDeliLine = []
-//
-// function takeANumber(line, customer) {
-//   line.push(customer)
-//   return line.length
-// }
-//
-// takeANumber(katzDeliLine, 'camille')
-//
-// assert('takeANumber adds a customer to the line', katzDeliLine.length === 1)
-// assert(
-//   'takeANumber returns the length of the line',
-//   takeANumber(katzDeliLine, 'michael') === 2
-// )
-//
-// function showLine(line) {
-//   // "The line is 1. camille 2. micahel"
-//   result = "The line is "
-//
-//   // for(where to start counting; when to stop counting; how to count) {
-//   for(let i = 0; i < line.length; i++) {
-//     console.log('the customer is', line[i]);
-//     result += `${i + 1}. ${line[i]} `
-//   }
-//
-//   return result
-// }
-//
-// assert('showLine shows the line', showLine(katzDeliLine) === "The line is 1. camille 2. michael ")
+assert('showLine returns the current Line', showLine() === "The line is currently: 1. Mica, 2. Nicky, ")

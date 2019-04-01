@@ -8,6 +8,7 @@
         color: green;
         font-weight: bold;
       }
+
       .fail {
         color: red;
         text-decoration: line-through;
@@ -15,18 +16,23 @@
     </style>
   </head>
   <body>
-    <h1 class="title">Hello</h1>
-    <ul class='results'>
+    <h1>Hello!</h1>
+    <!-- <script>
+      debugger
+    </script> -->
+    <ul id='results'>
     </ul>
     <script>
-      function assert(description, val) {
-        var ul = document.querySelector('.results')
+      function assert(description, value) {
+        var ul = document.querySelector('ul#results')
+
         var li = document.createElement('li')
         li.innerText = description
-        li.className = val ? 'pass' : 'fail'
+        li.className = value ? 'pass' : 'fail'
+
         ul.appendChild(li)
       }
     </script>
-    <script src="index.js"></script>
+    <script src='index.js'></script>
   </body>
 </html>

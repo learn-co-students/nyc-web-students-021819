@@ -1,75 +1,81 @@
-console.log('we are here');
+console.log('in index.js')
 
+assert('JS does basic math', 1 + 1 == 2)
+assert('JS has the double equals equality operator', 2 == 2)
+assert('JS double equals equality operator coerces type', 2 == '2')
+assert('JS triple equals equality operator coerces type', 2 !== '2')
 
-assert('JS has == equality operator', 2 == 2)
-assert('Double equals coerces types', 2 == '2')
-assert('Triple equals does not coerce types', 2 !== '2')
-
-
-var num
-console.log('num is:', num);
-assert('undefined is a falsey value', !num)
-
-var num = null
-assert('null is a falsey value', !num)
-
-var num = 7
-assert('JS has numbers', typeof num === 'number')
-
-var num = 7.00001
-assert('JS has floats', typeof num === 'number')
-
-assert('JS has strings', typeof 'hello' === 'string')
+assert('the && operator', !(true && false))
+assert('the || operator',  true || false)
+assert('the && operation evaluates to the value of the expression', "ponies" || true)
+//
+// var name = 'alex'
+// assert('JS has string templating', `Hello, ${name}` === "Hello, alex")
 
 function name() {
-  return "alex"
+  return "ian"
 }
 
-assert('JS has string templating', `Hello ${name()}` === "Hello alex")
+assert('In a JS function you need an explicit return', name() === 'ian')
+
+assert('JS has string templating', `Hello, ${name()}` === "Hello, ian")
+
+var firstName
+console.log('firstName is:', firstName);
+
+assert('a newly declared variable is undefined. undefined is a falsey value', !firstName)
+
 
 var arr = []
-assert('JS has arrays', Array.isArray(arr))
+assert("JS has arrays", Array.isArray(arr))
 
 var obj = {}
-assert('JS has objects', typeof obj === 'object')
+assert("JS has objects", typeof obj === "object")
 
-var obj = {name: 'charlie'}
-assert('We can use dot notation with objects', obj.name === 'charlie')
+var obj = {name: 'vicky'}
+assert(
+  "We can use dot notation to access the value at a certain key of a JS object",
+  obj.name === 'vicky'
+)
 
-var obj = {name: 'charlie'}
-assert('We can use bracket notation with objects', obj['name'] === 'charlie')
+var obj = {name: 'vicky'}
+assert(
+  "We can use bracket notation to access the value at a certain key of a JS object",
+  obj["name"] === 'vicky'
+)
 
-var obj = {name: 'charlie'}
-var key = 'name'
-assert('We can use bracket notation with objects', obj[key] === 'charlie')
+const key = "name"
+
+assert(
+  "We can use bracket notation to access the value at a certain key of a JS object and the value in the brackets will be evaluated as JS",
+  obj[key] === 'vicky'
+)
 
 
 var katzDeliLine = []
 
-function takeANumber(line, customer) {
-  line.push(customer)
-  return line.length
+function takeANumber(name) {
+  katzDeliLine.push(name)
+  return katzDeliLine.length
 }
 
-takeANumber(katzDeliLine, 'camille')
 
-assert('takeANumber adds a customer to the line', katzDeliLine.length === 1)
-assert(
-  'takeANumber returns the length of the line',
-  takeANumber(katzDeliLine, 'michael') === 2
-)
+assert ('takeANumber returns the new length of the line', takeANumber('Mica') === 1)
 
-function showLine(line) {
-  // "The line is 1. camille 2. micahel"
-  result = "The line is "
+takeANumber('Nicky')
 
-  // for(where to start counting; when to stop counting; how to count) {
-  for(let i = 0; i < line.length; i++) {
-    console.log('the customer is', line[i]);
-    result += `${i + 1}. ${line[i]} `
+function showLine() {
+  var results = "The line is currently: "
+
+  // for(where to start counting; when to stop; how to count)
+  for(let i = 0; i < katzDeliLine.length; i++) {
+    const name = katzDeliLine[i]
+    results += `${i + 1}. ${name}, `
   }
 
-  return result
+  // console.log(name)
+
+  return results
 }
 
-assert('showLine shows the line', showLine(katzDeliLine) === "The line is 1. camille 2. michael ")
+assert('showLine returns the current Line', showLine() === "The line is currently: 1. Mica, 2. Nicky, ")
