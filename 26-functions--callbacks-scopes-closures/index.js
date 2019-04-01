@@ -27,8 +27,8 @@ const expect = function(value) {
 //   // expect(num).toEqual(2)
 // })
 
+var num = 5
 assert('JS double equals equality operator coerces type', function(){
-  var num = 5
   return expect(num).toEqual(5)
 })
 
