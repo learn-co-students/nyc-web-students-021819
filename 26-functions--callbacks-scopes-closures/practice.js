@@ -6,6 +6,10 @@
 //  num.even?
 // end
 
+[1,2,3,4,5,6,7,8].filter(function(num) {
+  return num % 2 === 0
+})
+
 
 
 // PROBLEM 2
@@ -39,6 +43,10 @@ const books = [
       "pages": 288,
     }
   ]
+
+  books.map(function(book) {
+    return book.title
+  })
 
 
 // PROBLEM 3
