@@ -1,6 +1,18 @@
 # Intro to the DOM 📜
 # Intro to Events at bottom
 
+# pull up a random (work friendly) wikipedia page
+# change the content of the title
+# change the color of the title
+
+# grab all h2 tags using document.getElementsByTagName
+# change the content of all h2 tags to the same thing
+# turn the HTML collection into an Array, and then use forEach
+# to change all of the text
+# change the font of all h2s to comic sans
+"Comic Sans MS, cursive, sans-serif"
+
+
 ### The Document Object Model Overview
 - What is the DOM?
   - The DOM (Document Object Model) is a representation of an HTML document as a **tree** that can be manipulated with JavaScript

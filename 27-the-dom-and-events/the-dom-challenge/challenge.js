@@ -1,7 +1,11 @@
-document.addEventListener("DOMContentLoaded", function(){
-  let form = document.getElementById('comment-form')
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById('comment-form')
 
-  console.log('we are here')
-  console.dir(form)
-
+  const submitButton = document.getElementById('submit')
+  form.addEventListener('submit', function(e) {
+    e.preventDefault()
+    console.log('I am clicked')
+  })
+  // console.log('we are here')
+  // console.dir(form)
 })
