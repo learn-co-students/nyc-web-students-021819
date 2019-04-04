@@ -1,99 +1,101 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const pokemons = POKEMON
-  console.log(pokemons)
-  // POKEMON IS MY DATA AS AN ARRAY
-  // my data is coming in through the script tag on the line above in html
+/*
+  1. get some data
+  2. change the data to some HTML
+  3. manipulate the DOM
+*/
 
-  const pokemonContainer = document.querySelector('#pokemon-container')
-  const pokemonSearchInput = document.getElementById('pokemon-search-input')
-  // references to nodes/elements on the page
-  // organization for the constants potentially needed in the scope
+document.addEventListener("DOMContentLoaded", () => {
+  // console.table(POKEMON)
 
-  // iterate through all pokemon
-  // where to append to ? => pokemonContainer
-  // follow how to make the card exactly like the template
-  // const pokemonContainer = document.getElementById('pokemon-container')
+  // DOM ELEMENT
+  const pokemonContainerDiv = document.getElementById('pokemon-container')
+  const pokemonSearchInput = document.querySelector('#pokemon-search-input')
 
-  // let wahtIsthis = POKEMON.map(pokemon => {
-  //   return `
-  //     <div class='pokemon-card'>
-  //       <div class="pokemon-frame">
-  //         <h1 class="center-text">${pokemon.name}</h1>
-  //         <div class="pokemon-image">
-  //           <img data-id="${pokemon.id}" data-action="flip" class="toggle-sprite" src=${pokemon.sprites.front}>
-  //         </div>
-  //       </div>
-  //     </div>`
-  // })
-  //
-  // pokemonContainer.innerHTML = wahtIsthis.join('')
-
-  function renderAllPokemons(pokemons) {
-    pokemons.forEach(pokemon => {
-      pokemonContainer.innerHTML += `
-      <div class='pokemon-card'>
-      <div class="pokemon-frame">
-      <h1 class="center-text">${pokemon.name}</h1>
-      <div class="pokemon-image">
-      <img data-id="${pokemon.id}" data-action="flip" class="toggle-sprite" src=${pokemon.sprites.front}>
-      </div>
-      </div>
-      </div>`
-    })
-  }
-
-  renderAllPokemons(pokemons)
-  // POKEMON.forEach(pokemon => {
-  //   console.log(pokemon)
-  //   // create the element
-  //   // fill in the data
-  //   // attach it to the page
-  //
-  //   const pokeCardDiv = document.createElement('div')
-  //   pokeCardDiv.className = 'pokemon-card'
-  //   pokeCardDiv.innerHTML = `
-  //     <div class="pokemon-frame">
-  //       <h1 class="center-text">${pokemon.name}</h1>
-  //       <div class="pokemon-image">
-  //         <img data-id="${pokemon.id}" data-action="flip" whatisthis='h' class="toggle-sprite" src=${pokemon.sprites.front}>
-  //       </div>
-  //     </div>
-  //   `
-  //   pokemonContainer.append(pokeCardDiv)
-  // })
-
-  // lets do this filter function
-  // get the input reference on the page
-  // find the value input
-  // compare to what value probably name
-  // according my collection in this pokemons
-
+  // EVENT LISTERS
+  // filter functionality
+  // get the user input 
+  // based on the user input, filer our array of pokemon  
+  // rerender 
   pokemonSearchInput.addEventListener('input', event => {
-    pokemonContainer.innerHTML = ''
-    // empty the container before adding anything to it
+    const userInput = event.target.value
+    const filteredPokes = POKEMON.filter(poke => poke.name.includes(userInput))
 
-    const filteredPokemon = pokemons.filter(function(pokemon) {
-      return pokemon.name.includes(event.target.value)
-    })
-
-    renderAllPokemons(filteredPokemon)
-    // attach the new set of pokemons to the page
+    pokemonContainerDiv.innerHTML = renderAllPokemon(filteredPokes)
   })
 
-  pokemonContainer.addEventListener('click', event => {
-    // console.log(event.value)
-    if (event.target.className === 'toggle-sprite') {
-      const pokedPokemon = pokemons.find(pokemon => {
-        return pokemon.id === parseInt(event.target.dataset.id)
-      })
-      // lets find the particular pokemon that was clicked
-      console.log(pokedPokemon);
+  pokemonContainerDiv.addEventListener('click', function (e) {
+    if (e.target.dataset.action === 'flip') {
+      const img = e.target
+      const pokeId = parseInt(img.dataset.id)
 
-      // event.target.src = ????? something other than what i am front or back and lets do the opposite
-      event.target.src === pokedPokemon.sprites.front
-        ? event.target.src = pokedPokemon.sprites.back
-        : event.target.src = pokedPokemon.sprites.front
+      const pokedPoke = POKEMON.find(poke => poke.id === pokeId)
+
+      if (img.src === pokedPoke.sprites.front) {
+        img.src = pokedPoke.sprites.back
+      } else {
+        img.src = pokedPoke.sprites.front
+      }
     }
   })
 
-})
+  // INITIAL RENDER
+
+  // iterate over the array forEach
+  // create that element for each pokemon
+  // create the innerHTML
+  // add it to the parent tag
+  // then append it to the DOM
+  // or use appendChild
+  // pokemonContainerDiv.innerHTML = ""
+  // POKEMON.forEach(function (poke) {
+  //   // console.log(poke)
+  //   pokemonContainerDiv.innerHTML += `
+  //   <div class="pokemon-card">
+  //     <div class="pokemon-frame">
+  //       <h1 class="center-text">${poke.name}</h1>
+  //       <div class="pokemon-image">
+  //         <img data-id="${poke.id}" data-action="flip" class="toggle-sprite" src="${poke.sprites.back}">
+  //       </div>
+  //     </div>
+  //   </div>
+  //   `
+  // })
+
+
+
+
+  // const mappedPokes = POKEMON.map(poke => {
+  //   return `<div class="pokemon-card">
+  //     <div class="pokemon-frame">
+  //       <h1 class="center-text">${poke.name}</h1>
+  //       <div class="pokemon-image">
+  //         <img data-id="${poke.id}" data-action="flip" class="toggle-sprite" src="${poke.sprites.back}">
+  //       </div>
+  //     </div>
+  //   </div>
+  //   `
+  // }).join("")
+
+  pokemonContainerDiv.innerHTML = renderAllPokemon(POKEMON)
+});
+
+// HELPER METHODS
+function renderPokemon(poke) {
+  return `<div class="pokemon-card">
+            <div class="pokemon-frame">
+              <h1 class="center-text">${poke.name}</h1>
+              <div class="pokemon-image">
+                <img data-hi="yeet" data-id="${poke.id}" data-action="flip" class="toggle-sprite" src="${poke.sprites.back}">
+              </div>
+            </div>
+          </div>
+        `
+}
+
+function renderAllPokemon(pokemons) {
+  // return pokemons.map(renderPokemon).join("")
+
+  return pokemons.map(function (poke) {
+    return renderPokemon(poke)
+  }).join("")
+}

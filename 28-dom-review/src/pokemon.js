@@ -1,5 +1,28 @@
 const POKEMON = [
   {
+    height: 7,
+    weight: 69,
+    id: 1,
+    name: "bulbasaur",
+    abilities: ["chlorophyll", "overgrow"],
+    moves: [],
+    stats: [
+      { value: 45, name: "speed" },
+      { value: 65, name: "special-defense" },
+      { value: 65, name: "special-attack" },
+      { value: 49, name: "defense" },
+      { value: 49, name: "attack" },
+      { value: 45, name: "hp" }
+    ],
+    types: ["poison", "grass"],
+    sprites: {
+      front:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      back:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
+    }
+  },
+  {
     height: 10,
     weight: 130,
     id: 2,
