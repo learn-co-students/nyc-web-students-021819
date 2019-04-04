@@ -11,6 +11,14 @@
 ## CRUD EXERCISE
 Use the [documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to guide you.
 
+fetch("url", {
+  method: "POST",
+  headers: {
+    {"Content-Type": "application/json"}
+  },
+  body: JSON.stringify({key: 'value'})
+  })
+
 For POST/PATCH:
 The second argument to fetch is an object representing the configuration options for the request.
 

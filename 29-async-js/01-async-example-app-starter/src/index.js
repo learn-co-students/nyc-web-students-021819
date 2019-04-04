@@ -9,6 +9,26 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('the document is ready');
+
+  // const response = alexsFetch('https://www.googleapis.com/books/v1/volumes?q=fiction')
+
+  console.log('right before the fetch');
+
+  alexsFetch('https://www.googleapis.com/books/v1/volumes?q=fiction')
+  .then(function(response) {
+    allBooks = response.items.map(book => {
+      return {
+        id: book.id,
+        title: book.volumeInfo.title,
+        author: book.volumeInfo.authors[0],
+        pages: book.volumeInfo.pageCount
+      }
+    })
+    renderBooks(allBooks)
+  })
+
+  // console.log('after the fetch allBooks', allBooks);
+
   // THIS IS CURRENTLY ENTIRELY SYNCHRONOUS, WE HAVE ACCESS TO `data.books`, a static array
   const books = data.books
 
@@ -21,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const createListItem = (book) => {
     const div = document.createElement('div')
     div.className = 'item'
+
     div.innerHTML = `
     <i class="large book middle aligned icon"></i>
     <div class="content">
@@ -67,8 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
     bookListItems.forEach(renderListItem)
   }
 
-  const renderListItem = (node) => {
-    list.appendChild(node)
+  const renderListItem = (bookNode) => {
+    list.appendChild(bookNode)
   }
 
   const renderCard = (node) => {
@@ -91,14 +112,32 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   const handleHeaderClick = (e) => {
-    // TODO: when the 'BookSearchr' header is clicked
-    // show the default view of all the books
+    e.preventDefault()
+    renderBooks(books)
   }
 
   const handleSubmit = (e) => {
-    // TODO: when the form is submitted, show only books
-    // where the title, author, or description
-    // includes the search term
+    e.preventDefault()
+    const input = e.target.querySelector('input')
+    const value = input.value
+
+    input.value = ''
+
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}`)
+    // .then(res => res.json())
+    .then(function(res) {
+      return res.json()
+    }).then(function(books) {
+      const allBooks = books.items.map(book => {
+        return {
+          id: book.id,
+          title: book.volumeInfo.title,
+          author: book.volumeInfo.authors[0],
+          pages: book.volumeInfo.pageCount
+        }
+      })
+      renderBooks(allBooks)
+    })
   }
 
 
@@ -108,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
   header.addEventListener('click', handleHeaderClick)
   form.addEventListener('submit', handleSubmit)
 
-  renderBooks(books)
+  // renderBooks(allBooks)
 
+  console.log('alll the way at the bottom of the code');
 })
