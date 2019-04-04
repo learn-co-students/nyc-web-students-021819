@@ -10,33 +10,14 @@
 document.addEventListener('DOMContentLoaded', function() {
   console.log('the document is ready');
   // THIS IS CURRENTLY ENTIRELY SYNCHRONOUS, WE HAVE ACCESS TO `data.books`, a static array
-  let books = []
-  console.log('we are about to make an AJAX req');
-  fetch("https://www.googleapis.com/books/v1/volumes?q=fiction")
-  .then(res => res.json())
-  .then(function(json) {
-    console.log('the response is', json);
-    // debugger
-    let formattedBooks = json.items.map(book => ({id: book.id, title: book.volumeInfo.title, author: book.volumeInfo.authors[0]}))
-    renderBooks(formattedBooks)
-  })
-
-  // alexsFetch("https://www.googleapis.com/books/v1/volumes?q=fiction")
-  // .then(function(response) {
-  //   console.log('the response is', response);
-  //   // debugger
-  //   let formattedBooks = response.items.map(book => ({id: book.id, title: book.volumeInfo.title, author: book.volumeInfo.authors[0]}))
-  //   renderBooks(formattedBooks)
-  // })
-  console.log('We hav just made an AJAX req');
-  console.log('books:', books)
+  const books = data.books
 
   // DOM Nodes
   const list = document.querySelector('.ui.relaxed.divided.list')
   const header = document.querySelector('.ui.inverted.teal.menu')
   const form = document.querySelector('.ui.form')
 
-  // FUNCTIONS: create DOM nodes (components)
+  // FUNCTIONS: create DOM nodes
   const createListItem = (book) => {
     const div = document.createElement('div')
     div.className = 'item'
@@ -110,41 +91,23 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   const handleHeaderClick = (e) => {
-    e.preventDefault()
-    renderBooks()
+    // TODO: when the 'BookSearchr' header is clicked
+    // show the default view of all the books
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const term = e.target.querySelector('input').value
-
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${term}`)
-    // below this line is the the same code copied from what we built in lecture
-    .then(res => res.json())
-    .then(function(json) {
-      let formattedBooks = json.items.map(book => ({id: book.id, title: book.volumeInfo.title, author: book.volumeInfo.authors[0]}))
-      renderBooks(formattedBooks)
-    })
+    // TODO: when the form is submitted, show only books
+    // where the title, author, or description
+    // includes the search term
   }
 
-  // fetch(
-  //   "http://safe-river-70277.herokuapp.com/encouraging_notes",
-  //   {
-  //     method: 'POST',
-  //     headers: {"Content-Type": "application/json"},
-  //     body: JSON.stringify({message: "it works!", username: "my name"})
-  //   }
-  // )
 
 
   // Show Books & Attach Event Listener
-  // renderBooks()
-
   list.addEventListener('click', handleListItemClick)
   header.addEventListener('click', handleHeaderClick)
   form.addEventListener('submit', handleSubmit)
 
+  renderBooks(books)
 
-
-  console.log('allllllll the way at the bottom');
 })
