@@ -12,5 +12,11 @@ class AnimalsController < ApplicationController
   end
 
   def create
+    @species = Species.find_or_create_by(name: params[:species_name])
+
+    @animal = Animal.create(species_id: @species.id, name: params[:name], diet: params[:diet].to_i)
+
+    render json: @animal
   end
+
 end

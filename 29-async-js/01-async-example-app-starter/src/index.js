@@ -9,13 +9,14 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('the document is ready');
-
+  let allBooks
   // const response = alexsFetch('https://www.googleapis.com/books/v1/volumes?q=fiction')
 
   console.log('right before the fetch');
 
   alexsFetch('https://www.googleapis.com/books/v1/volumes?q=fiction')
   .then(function(response) {
+    console.log('response from api', response);
     allBooks = response.items.map(book => {
       return {
         id: book.id,
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     renderBooks(allBooks)
   })
+
+  console.log('allBooks', allBooks);
 
   // console.log('after the fetch allBooks', allBooks);
 
@@ -100,15 +103,20 @@ document.addEventListener('DOMContentLoaded', function() {
   // FUNCTIONS: EVENT HANDLERS
   const handleListItemClick = (e) => {
     e.preventDefault()
-    const clicked = e.target
+    // console.log('allBooks', allBooks);
+    // console.log(e.target)
+    // const clicked = e.target
 
-    if (clicked.matches('.header')) {
-      const id = parseInt(clicked.dataset.id)
-      const book = books.find(book => book.id === id )
-      const card = createCard(book)
-
-      renderCard(card)
-    }
+    const book = allBooks.find(book => book.id === e.target.dataset.id)
+    console.log(book);
+    //
+    // if (clicked.matches('.header')) {
+    //   const id = parseInt(clicked.dataset.id)
+    //   const book = books.find(book => book.id === id )
+    //   const card = createCard(book)
+    //
+    //   renderCard(card)
+    // }
   }
 
   const handleHeaderClick = (e) => {
