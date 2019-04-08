@@ -1,6 +1,9 @@
 /* 
   NOTE: this is the refactored code from the lecture. 
   To see the initial code we wrote, look at _index.js
+
+  In this code I refactored the fetch calls to an apiAdaptor function 
+  that is defined in the adaptor.js file
 */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -13,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const quoteListUl = document.querySelector("#quote-list");
   const newQuoteForm = document.querySelector("#new-quote-form");
 
-  /**** Event Handlers ****/
+
+  /**** Event Handler functions ****/
   const handleFormSubmit = e => {
     // prevent default action to stop form from POSTing
     e.preventDefault();
@@ -25,11 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
       likes: 0
     };
 
-    // post it to the database
+    // POST it to the database
     apiAdaptor.post(quoteObj).then(quoteData => {
       // add the newly created quote to the application state
+      // using the ...spread operator to append our new quote to the list of existing quotes (state.quotes.push(quoteData) also works!)
       state.quotes = [...state.quotes, quoteData];
-      // rerender
+
+      // rerender all the quotes
       renderAllQuotes();
     });
   };
@@ -60,44 +66,54 @@ document.addEventListener("DOMContentLoaded", () => {
       // update it on the server
       apiAdaptor.update(quoteId, { likes: quote.likes });
 
-      // rerender (optimistically)
+      // (optimistically) rerender
       renderAllQuotes();
     }
   };
 
-  /**** Event Listeners ****/
+
+  /**** Helpers to generate new HTML and append to DOM ****/
+  const createQuoteDomNode = quote => {
+    const li = document.createElement('li')
+    li.className = 'quote-card'
+    li.dataset.id = quote.id
+    li.innerHTML = `
+      <blockquote class="blockquote">
+        <p class="mb-0">${quote.quote}</p>
+        <footer class="blockquote-footer">${quote.author}</footer>
+        <br>
+        <button data-action='like' data-id='${quote.id}' class='btn-success'>Likes: <span>${quote.likes}</span></button>
+        <button data-action='delete' data-id='${quote.id}' class='btn-danger'>Delete</button>
+      </blockquote>`;
+    return li
+  };
+
+  const renderQuote = (node) => {
+    quoteListUl.appendChild(node)
+  }
+
+  const renderAllQuotes = () => {
+    // reset our quoteListUl
+    quoteListUl.innerHTML = ''
+
+    // create new DOM nodes from our quotes in application state
+    const quoteDomNodes = state.quotes.map(createQuoteDomNode);
+
+    // append them to the DOM
+    quoteDomNodes.forEach(renderQuote)
+  };
+
+
+  /**** Attach Event Listeners to the DOM ****/
   newQuoteForm.addEventListener("submit", handleFormSubmit);
   quoteListUl.addEventListener("click", handleQuoteListClick);
 
-  /**** Initial Render ****/
+
+  /**** Initial Data Fetch and Render ****/
   apiAdaptor.getAll().then(quoteData => {
     // save to our internal quote object
     state.quotes = quoteData;
     // call render
     renderAllQuotes();
   });
-
-  /**** Render Helpers ****/
-  const quoteToHtmlString = quote => {
-    return `
-      <li data-id='${quote.id}' class='quote-card'>
-        <blockquote class="blockquote">
-          <p class="mb-0">${quote.quote}</p>
-          <footer class="blockquote-footer">${quote.author}</footer>
-          <br>
-          <button data-action='like' data-id='${
-            quote.id
-          }' class='btn-success'>Likes: <span>${quote.likes}</span></button>
-          <button data-action='delete' data-id='${
-            quote.id
-          }' class='btn-danger'>Delete</button>
-        </blockquote>
-      </li>
-    `;
-  };
-
-  const renderAllQuotes = () => {
-    const quoteListHtml = state.quotes.map(quoteToHtmlString).join("");
-    quoteListUl.innerHTML = quoteListHtml;
-  };
 });
