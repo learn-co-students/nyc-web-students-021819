@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // FUNCTIONS: EVENT HANDLERS
   const handleListItemClick = (e) => {
     e.preventDefault()
-    // console.log('allBooks', allBooks);
-    // console.log(e.target)
+      // console.log('allBooks', allBooks);
+      // console.log(e.target)
     // const clicked = e.target
 
     const book = allBooks.find(book => book.id === e.target.dataset.id)
