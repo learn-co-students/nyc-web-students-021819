@@ -17,6 +17,11 @@
 
 // as a contructor
 
+// use the new keyword to invoke as a constructor
+// by convention we use a capital letter
+
+// this becomes the newly created "instance"
+
 function thisLogger() {
 	console.log(this)
 }
@@ -26,12 +31,12 @@ function locationLogger() {
 }
 
 const listEmployees = function() {
-	console.log('on the OUTER fn this is', this);
+	// console.log('on the OUTER fn this is', this);
 
-	this.employees.forEach(function(employee) {
-		console.log('in the INNER fn this is', this);
+	this.employees.forEach(employee => {
 	  console.log(`Employee: ${employee.name} works at ${this.name}`)
 	})
+	// console.log('on the OUTER fn this is', this);
 }
 
 
@@ -60,3 +65,63 @@ const chipotle = {
 	],
 	listEmployees: listEmployees
 }
+
+
+// factory Pattern
+
+
+const restaurantFactory = function(name, employeeList) {
+	const list = function() {
+
+		this.employees.forEach(employee => {
+		  console.log(`Employee: ${employee.name} works at ${this.name}`)
+		})
+	}
+
+	return {
+		name: name,
+		employees: employeeList.map(em => ({name: em})),
+		list: list
+	}
+}
+
+// function Restaurant(name, employees) {
+	// console.log(this);
+	// this.name = name
+	// // console.log(this);
+	// this.employees = employees.map(em => ({name: em}))
+	// console.log(this);
+//
+// 	// this.list = function() {
+// 	//
+// 	// 	this.employees.forEach(employee => {
+// 	// 	  console.log(`Employee: ${employee.name} works at ${this.name}`)
+// 	// 	})
+// 	// }
+// }
+//
+// Restaurant.prototype.list = function() {
+//
+	// this.employees.forEach(employee => {
+	//   console.log(`Employee: ${employee.name} works at ${this.name}`)
+	// })
+// }
+
+
+class Restaurant {
+	constructor(name, employees){
+		console.log('in the constructor', this);
+		this.name = name
+		this.employees = employees.map(em => ({name: em}))
+
+		this.constructor.all.push(this)
+	}
+
+	list() {
+		this.employees.forEach(employee => {
+			console.log(`Employee: ${employee.name} works at ${this.name}`)
+		})
+	}
+}
+
+Restaurant.all = []
