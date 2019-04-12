@@ -19,4 +19,11 @@ class AnimalsController < ApplicationController
     render json: @animal
   end
 
+  def destroy
+    @animal = Animal.find_by(id: params[:id])
+    @animal.destroy
+    
+    head :ok
+  end
+
 end
