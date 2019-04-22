@@ -18,27 +18,18 @@ Intro to React // JSX & Props
 
 
 ## Declarative vs Imperative Programming
-*IMPERATIVE*
-click on a thing
-make other thing happen
+#### *IMPERATIVE*
+1. Go get the ingredients
+2. Lay down the bread
+3. Lay down the toppings
+4. Add sauces
+5. Smush
 
-Find an element on the page
-Add an event listener to that element with a callback to execute upon event trigger
+#### *DECLARATIVE* 
+1. Order a sandwich and tell them what toppings you want 
+2. Sandwich comes out
 
-Go get the ingredients
-Lay down the bread
-Lay down the toppings
-Add sauces
-Smush
-
-*DECLARATIVE* 
-renderCard(name){
-  return `<div>${name}</div>`
-}
-
-Order a sandwich and tell them what toppings you want 
-Sandwich comes out
-
+Declarative programming is an abstraction of imperative programming: when you order the sandwich, someone is still imperatively doing all of the necessary steps to make a sandwich, but you as a customer you simply declare what you want and receive the outcome.
 
 ## Slow abstraction to JSX
 
