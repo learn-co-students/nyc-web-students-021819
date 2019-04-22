@@ -9,13 +9,64 @@
   </head>
   <body>
     <div id="root"></div>
+
     <script type="text/babel">
 
+      // Some sort of object with a render function
+      // Takes 2 arguments: 1st is what you want to render, and the 2nd is where you want to render it to
+
+      let array = ["world", "beef", "squid"]
+
+      function Greeting(props){
+        return <h1>Hello {props.phrase}! - {props.name}</h1>
+      }
+
       ReactDOM.render(
-        <h1>Hello, world!</h1>,
+        <div id="1">
+          <Greeting phrase="world" name="Alex"/>
+          <Greeting phrase="beef" name="Peter"/>
+          <Greeting phrase="squid" name="Katarina"/>
+        </div>, 
         document.getElementById('root')
-      );
+      )
+
+
+
+
+      // ReactDOM.render(
+      //   <div>
+      //     {Greeting("world", "Alex")}
+      //     {Greeting("beef", "Peter")}
+      //     {Greeting("squid", "Katarina")}
+      //   </div>, 
+      //   document.getElementById('root')
+      // )
+
+
+      // WONT WORK
+      // a = if x === 3 {
+      //   "wutup"
+      // }
+
+      // WILL WORK
+      // a = x === 3 ? "wutup" : "buhbye"
+
+
+      // ReactDOM.render(
+      //   <div>
+      //     <h1>Hello, world!</h1>
+      //     <h1>Hello, beef!</h1>
+      //     <h1>Hello, squid!</h1>
+      //   </div>,
+      //   document.getElementById('root')
+      // );
 
     </script>
   </body>
 </html>
+
+
+
+// User.new("John", 27, "therapist")
+// User.new(age: 27, name: "John", occupation: "therapist")
+

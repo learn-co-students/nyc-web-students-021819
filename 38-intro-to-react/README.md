@@ -3,16 +3,44 @@ Intro to React // JSX & Props
 
 ## SWBAT
 
-- [ ] Visualize/Identify Components on any website
-- [ ] Explain what a Component is conceptually in the UI
+- [x] Visualize/Identify Components on any website
+- [x] Explain what a Component is conceptually in the UI
 - [ ] Explain what a React Component actually is in code (an object, made by a class)
 - [ ] Understand how create-react-app works and what it offers a developer
 - [ ] Setup a new React app and play around with building UIs
 - [ ] Use JSX to build custom components and render them in the browser
+
+
 - [ ] Use props to make components more dynamic and reusable
 - [ ] See how props are to components as arguments are to functions
 - [ ] Begin to build modular & reusable components
 - [ ] Begin to see the declarative nature of React
+
+Declarative vs Imperative Programming
+
+
+IMPERATIVE
+click on a thing
+make other thing happen
+
+Find an element on the page
+Add an event listener to that element with a callback to execute upon event trigger
+
+Go get the ingredients
+Lay down the bread
+Lay down the toppings
+Add sauces
+Smush
+
+DECLARATIVE 
+renderCard(name){
+  return `<div>${name}</div>`
+}
+
+Order a sandwich and tell them what toppings you want 
+
+
+
 
 ## Outline
 
