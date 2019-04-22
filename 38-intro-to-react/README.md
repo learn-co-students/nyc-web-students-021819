@@ -1,20 +1,23 @@
 Intro to React // JSX & Props
 =============================
 
-## SWBAT
+## SWBATs
 
 - [x] Visualize/Identify Components on any website
 - [x] Explain what a Component is conceptually in the UI
 - [x] Explain what a React Component actually is in code (an object, made by a class)
 - [x] Use JSX to build custom components and render them in the browser
+- [x] Briefly explain Babel's purpose in React
 
 
-- [ ] Understand how create-react-app works and what it offers a developer
-- [ ] Setup a new React app and play around with building UIs
-- [ ] Use props to make components more dynamic and reusable
-- [ ] See how props are to components as arguments are to functions
-- [ ] Begin to build modular & reusable components
-- [ ] Begin to see the declarative nature of React
+- [x] Understand how `create-react-app` works and what it offers a developer
+- [x] Organize code into files and use the import-export syntax to pass code between files
+- [x] Setup a new React app and play around with building UIs
+- [x] Use props to make components more dynamic and reusable
+- [x] See how props are to components as arguments are to functions
+- [x] Begin to build modular & reusable components
+
+- [x] **BONUS** Use the `children` prop 
 
 
 ## Declarative vs Imperative Programming
@@ -118,43 +121,11 @@ function Greeting(props){
 }
 ```
 
+App ideas
+
+Ninja Tinda
 
 
-## More notes:
+<!-- Game of Thrones Spoiler App -->
 
-### Components Summary
 
-> All React components must act like pure functions with respect to their props.
-
-**My favorite analogy:** props are to components as arguments are to functions.
-
-#### Modular Components
-
-- Single Responsibility Principle is used to identify components (most of which are reusable)
-- `import` / `export`
-  - You can do everything in one file, but please don't!
-- **Declarative vs. Imperative**
-  - Declarative _declares_ what should happen.
-  - Imperative is where you _instruct_ how to make things happen.
-  - Abstraction, abstraction, abstraction.
-    - Imperative is just abstraction on more lower level imperative stuff.
-  - our renders should read like instructions on what to display to the screen
-
-#### React.Component
-
-- class syntax review (mod 3)
-  - `extends Component` <= what is this?
-- Inherits:
-  - `render()` <= is required!!
-    - Must always return 1 JSX, an array of JSX, or one of the things that renders as nothing (`null`, `true`, `false`, `undefined`): [See React Docs](https://reactjs.org/docs/jsx-in-depth.html#booleans-null-and-undefined-are-ignored)
-  - `constructor()`
-  - Among many many others.
-
-#### Component Extras
-
-`constructor()` vs `constructor(props)`
-- https://github.com/facebook/react/issues/11671
-
-### Declarative vs. Imperative
-
-Abstraction, abstraction, abstraction.
