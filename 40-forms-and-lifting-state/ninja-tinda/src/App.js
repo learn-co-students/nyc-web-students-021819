@@ -8,7 +8,8 @@ import Nav from "./Nav"
 
 class App extends React.Component {
   state = {
-    page: "find"
+    page: "new",
+    turtles: data
   }
 
   changePage = (newPage) => {
@@ -17,14 +18,20 @@ class App extends React.Component {
     })
   }
 
+  addTurtle = (turtleData) => {
+    this.setState({
+      turtles: [...this.state.turtles, turtleData]
+    })
+  }
+
   renderPage = () => {
     switch(this.state.page){
       case "home":
-        return <Home />
+        return <Home turtles={this.state.turtles}/>
       case "find":
-        return <TurtleCarousel turtles={data} />
+        return <TurtleCarousel turtles={this.state.turtles} />
       case "new":
-        return <NewTurtle />
+        return <NewTurtle addTurtle={this.addTurtle} />
       default:
         return null
     }

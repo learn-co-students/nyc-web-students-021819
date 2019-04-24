@@ -5,13 +5,32 @@ Controlled Forms and Lifting State
 
 - [ ] Debug the `event` object we get in our event handler callbacks
 - [ ] Write fully controlled forms
-- [ ] Pass data up and down the component hierarchy with our callbacks
+
 - [ ] Manipulate the DOM by changing values in `state` instead of using vanilla JS
+
+- [ ] Pass data up and down the component hierarchy with our callbacks
 - [ ] Draw a component hierarchy and describe the Flow of Information
 
-## Deliverables
-
 ## Lecture Notes
+
+How do we capture form data in JS?
+
+Add event listener to form (submit)
+Capture values of the inputs from
+  - Find the input field
+  - Grab its value
+Do whatever you need to do with the user input
+
+
+ For Next Lecture:
+
+ Delete a turtle
+ Update a turtle
+ Front-end form validations
+ What happens when you get to the end of the turtles??
+ Ninjify???
+ Back to the pond????
+
 
 ### Lifting State
 
