@@ -41,12 +41,15 @@ How do we capture form data in React?
 
 For Next Lecture:
 
-Delete a turtle
-Update a turtle
-Front-end form validations
-What happens when you get to the end of the turtles??
-Ninjify???
-Back to the pond????
+- [ ] Update a turtle
+- [ ] Front-end form validations
+- [ ] What happens when you get to the end of the turtles??
+- [x] Ninjify???
+  - Update the name (Add "Ninja" to the front)
+  - Add that turtle to a list of ninjas
+  - Give preferred weapon
+- [x] Back to the pond????
+  - [x] Delete a turtle
 
 
 ## Extras

@@ -7,12 +7,33 @@ class TurtleCarousel extends React.Component {
     index: 0
   }
 
-  handleClick = (event) => {
-    this.setState((prevState) => {
-      return {
-        index: prevState.index + 1
-      }
-    }) 
+  handleHover = (event) => {
+    // expects a turtle object => where are we getting it from?
+    const targetTurtleID = this.props.turtles[this.state.index].id
+
+    this.props.ninjifyTurtle(targetTurtleID)
+
+    const newIndex = this.state.index + 1
+
+    if (newIndex > this.props.turtles.length-1){
+      this.setState((prevState) => {
+        return {
+          index: 0
+        }
+      }) 
+    } else {
+      this.setState((prevState) => {
+        return {
+          index: newIndex
+        }
+      }) 
+    }
+    
+  }
+
+  handleDelete = () => {
+    const targetTurtleID = this.props.turtles[this.state.index].id
+    this.props.backToPond(targetTurtleID)
   }
 
   render(){
@@ -20,9 +41,9 @@ class TurtleCarousel extends React.Component {
 
     return (
       <div className="carousel" >
-        <button>Back to the pond!</button>
+        <button onMouseOver={this.handleDelete} >Back to the pond!</button>
         <ProfileCard turtle={targetTurtle} />
-        <button onMouseOver={this.handleClick}>Ninjify!</button>
+        <button onMouseOver={this.handleHover}>Ninjify!</button>
       </div>
     )
   }

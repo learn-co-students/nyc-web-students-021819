@@ -8,6 +8,7 @@ class Nav extends React.Component {
       <div className="navbar">
         <button onClick={() => this.props.changePage("home")} >Ninja Tinda</button>
         <button onClick={() => this.props.changePage("find")}>Find Turtles</button>
+        <button onClick={() => this.props.changePage("ninjas")}>Your Ninjas</button>
         <button onClick={() => this.props.changePage("new")}>Add a Turtle</button>
       </div>
     )

@@ -5,7 +5,7 @@ class Home extends React.Component {
   renderTurtles = () => {
     return this.props.turtles.map(turtle => {
       return (
-        <div className="turtle-card">
+        <div key={turtle.id} className="turtle-card">
           <div className="card-image-wrapper" >
             <img alt={turtle.name} className="image" src={turtle.image_url} />
           </div>
