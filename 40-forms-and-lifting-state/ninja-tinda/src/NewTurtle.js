@@ -37,10 +37,6 @@ class NewTurtle extends React.Component {
   }
   
   render(){
-    // Monitor our inputs and coordinate each input with state
-    // We will use the user input which is now stored in state to do whatever we need to do (DOM manipulation or send fetch request)
-
-
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
