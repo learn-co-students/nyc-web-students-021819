@@ -51,6 +51,8 @@ For Next Lecture:
 - [x] Back to the pond????
   - [x] Delete a turtle
 
+### Hierarchy
+![Hierarchy](./ninja-tinda-hierarchy.png)
 
 ## Extras
 
