@@ -24,10 +24,31 @@ const weapons = [
 
 class App extends React.Component {
   state = {
-    page: "new",
-    turtles: data,
-    ninjaTurtles: []
+    page: "find",
+    turtles: [],
+    user: {},
+    errors: ""
   }
+
+  componentDidMount(){
+    fetch("http://localhost:3000/api/v1/turtles")
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        turtles: data
+      })
+    })
+
+    fetch("http://localhost:3000/api/v1/users/1")
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        user: data
+      })
+    })
+  }
+
+
 
   changePage = (newPage) => {
     this.setState({
@@ -37,16 +58,13 @@ class App extends React.Component {
 
   ninjifyTurtle = (turtleID) => {
     // turtleData => turtle object
-    var weapon = weapons[Math.floor(Math.random()*weapons.length)]
+    // var weapon = weapons[Math.floor(Math.random()*weapons.length)]
+    // const turtleData = this.state.turtles.find(turtle => turtle.id === turtleID)
 
-    const turtleData = this.state.turtles.find(turtle => turtle.id === turtleID)
-
-    let updateTurtleData = {...turtleData, name: "Ninja " + turtleData.name, weapon: weapon, id: this.state.ninjaTurtles.length+1}
-    // We will eventually setState using an updated turtle object
-
-    this.setState({
-      ninjaTurtles: [...this.state.ninjaTurtles, updateTurtleData]
-    })
+    // let updateTurtleData = {...turtleData, name: "Ninja " + turtleData.name, weapon: weapon, id: this.state.ninjaTurtles.length+1}
+    // this.setState({
+    //   ninjaTurtles: [...this.state.ninjaTurtles, updateTurtleData]
+    // })
   }
 
   backToPond = (turtleID) => {
@@ -77,13 +95,17 @@ class App extends React.Component {
       case "new":
         return <NewTurtle addTurtle={this.addTurtle} />
       case "ninjas":
-        return <NinjaTurtles ninjaTurtles={this.state.ninjaTurtles} />
+        return <NinjaTurtles turtles={this.state.turtles} ninjaTurtles={this.state.user.ninja_turtles} />
       default:
         return null
     }
   }
 
   render(){
+    // if (this.state.errors){
+    //   return <h1 style={{color: 'red'}}>{this.state.errors}</h1>
+    // }
+
     return (
       <div className="App">
         <Nav changePage={this.changePage} />
@@ -91,7 +113,11 @@ class App extends React.Component {
       </div>
     );
   }
-  
+
+  componentDidCatch(){
+    // this.setState({errors: "WHOA YOU DUN GOOFED"})
+    window.location.href = "https://www.farmersonly.com/"
+  }
 }
 
 export default App;

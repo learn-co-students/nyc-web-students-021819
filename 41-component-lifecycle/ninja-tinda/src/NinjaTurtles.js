@@ -1,14 +1,15 @@
 import React from 'react'
-import ProfileCard from "./ProfileCard"
+import NinjaTurtleCard from "./NinjaTurtleCard"
 
 class NinjaTurtles extends React.Component {
 
   renderProfileCards(){
     return this.props.ninjaTurtles.map(nt => {
+      const foundTurtle = this.props.turtles.find(turtle => turtle.id === nt.turtle_id)
+
       return (
         <div key={nt.id}>
-         <ProfileCard turtle={nt} />
-         <h3>Weapon of choice: {nt.weapon}</h3>
+         <NinjaTurtleCard turtle={foundTurtle} weapon={nt.weapon}/>
         </div>
       )
     })

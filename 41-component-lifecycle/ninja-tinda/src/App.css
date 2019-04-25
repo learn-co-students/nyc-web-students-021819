@@ -53,9 +53,24 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.ninja-card {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  border-style: solid;
+  border-width: 5px;
+}
+
 .image {
   position: absolute;
   width: 500px;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+.weapon {
+  position: absolute;
+  max-width: 100px;
   top: 50%;
   left:50%;
   transform: translate(-50%, -50%);
