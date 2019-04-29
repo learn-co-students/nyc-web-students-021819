@@ -7,7 +7,7 @@ import Filter from './Filter'
 
 class App extends Component {
   state = {
-      hogs: hogs,
+      hogs: hogs
   }
 
   sortByName = () => {
