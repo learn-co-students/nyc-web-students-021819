@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/users/:id', to: "users#show"
       get '/turtles', to: "turtles#index"
+      post '/turtles', to: "turtles#create"
     end
   end
 end
