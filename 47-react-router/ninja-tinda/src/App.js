@@ -1,14 +1,15 @@
-import React from 'react';
-import './assets/App.css';
+import React from 'react'
+import './assets/App.css'
 import TurtleCarousel from "./containers/TurtleCarousel"
 import Home from "./containers/Home"
 import NewTurtle from "./containers/NewTurtle"
 import Nav from "./components/Nav"
 import NinjaTurtles from "./components/NinjaTurtles"
+import Welcome from './components/Welcome'
 
 class App extends React.Component {
   state = {
-    page: "find",
+    page: "welcome",
     turtles: [],
     user: {}
   }
@@ -56,7 +57,7 @@ class App extends React.Component {
       })
      } else {
       window.location.href = "https://www.farmersonly.com/"
-     }  
+     }
   }
 
   addTurtle = (turtleData) => {
@@ -78,6 +79,8 @@ class App extends React.Component {
 
   renderPage = () => {
     switch(this.state.page){
+      case "welcome":
+        return <Welcome />
       case "home":
         return <Home turtles={this.state.turtles}/>
       case "find":

@@ -35,7 +35,7 @@
 .navbar {
   height: 40px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: repeat(4, 1fr);
 }
 .carousel {
   display: grid;
@@ -80,4 +80,13 @@
   min-height: 300px;
   overflow: hidden;
   position: relative;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+  border: 3px dashed black;
 }
