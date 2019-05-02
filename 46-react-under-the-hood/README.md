@@ -101,11 +101,15 @@ Lists are tricky, especially when they are reordered (e.g. sorted). When doing t
 
 [Lists and Keys](https://reactjs.org/docs/lists-and-keys.html)
 
+[Why you need the key prop](https://medium.com/@vraa/why-using-an-index-as-key-in-react-is-probably-a-bad-idea-7543de68b17c)
+
 #### Event Pooling
 
 Because JS is a [garbage collected](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) language, creating a unique event object for every event callback can be expensive. Instead, React has a pool of bare events floating around. When an event is triggered, one of these is taken, given properties (e.g. event type, click coordinates, key pressed) and made available in the event handler callback. As soon as the function is finished, the event is stripped of its values and returned to the pool
 
 The practical consequence is that the event's data does not persist past the function's runtime. This includes inside asynchronous events (e.g. `setTimeout`, `setInterval`, promises) or anywhere outside of the callback it was created for. In order to persist the details of an event, you can use `event.persist()` which will allow an event to last beyond the runtime of its function.
+
+
 
 
 
