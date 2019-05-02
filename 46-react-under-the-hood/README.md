@@ -101,7 +101,7 @@ Lists are tricky, especially when they are reordered (e.g. sorted). When doing t
 
 [Lists and Keys](https://reactjs.org/docs/lists-and-keys.html)
 
-[Why you need the key prop](https://medium.com/@vraa/why-using-an-index-as-key-in-react-is-probably-a-bad-idea-7543de68b17c)
+[Why you need the key prop to be unique](https://medium.com/@vraa/why-using-an-index-as-key-in-react-is-probably-a-bad-idea-7543de68b17c)
 
 #### Event Pooling
 
