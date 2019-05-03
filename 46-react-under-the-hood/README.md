@@ -60,7 +60,7 @@ function render(object){
   If the object is just a string, return it. 
   If it's an object, we should treat it like a DOM element
   */
-  if (typeof (object) === "string") {
+  if (typeof (object) !== "string") {
 
   // Identify type of element it is and create it
     const type = object.type
