@@ -9,7 +9,7 @@ class NinjaTurtles extends React.Component {
 
       return (
         <div key={nt.id}>
-         <NinjaTurtleCard turtle={foundTurtle} weapon={nt.weapon}/>
+          <NinjaTurtleCard turtle={foundTurtle} weapon={nt.weapon}/>
         </div>
       )
     })

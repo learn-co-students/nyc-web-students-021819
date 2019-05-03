@@ -111,8 +111,6 @@ Combine that with `if/else` logic and tracking history and you get `react-router
   />
 }/>
 ```
-- Route props (`match`, `history`, `location`)
-- Nested routes
 
 ### Switch
 
@@ -130,7 +128,7 @@ Combine that with `if/else` logic and tracking history and you get `react-router
 ```
 - `NavLink` is a subclass of `Link` that adds styling to the element
 
-#### Redirect
+### Redirect
 
 - Redirects to another location
 
@@ -138,7 +136,13 @@ Combine that with `if/else` logic and tracking history and you get `react-router
 <Redirect to="/some-path" />
 ```
 
+### More on Routes
+
+- Route props (`match`, `history`, `location`)
+- Nested routes
+
 ### React Router Browser History
+
 - `history` object provides simple API to manage browser history
 
 ```javascript
