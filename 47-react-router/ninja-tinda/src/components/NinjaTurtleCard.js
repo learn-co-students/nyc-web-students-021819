@@ -8,7 +8,14 @@ const colors = [
   "#373499"
 ]
 
-function NinjaTurtleCard ({ turtle, weapon }) {
+function NinjaTurtleCard (props) {
+  console.log(props)
+  const turtleId = parseInt(props.match.params.id)
+  const turtle = props.turtles.find(t => t.id === turtleId)
+  const ninjaTurtle = props.ninjaTurtles.find(nt => nt.turtle_id === turtleId)
+  const weapon = ninjaTurtle.weapon
+  // console.log(ninjaTurtle)
+  // console.log(foundTurtle)
   const style={backgroundColor: colors[Math.floor(Math.random()*colors.length)]}
 
   return (
@@ -22,6 +29,7 @@ function NinjaTurtleCard ({ turtle, weapon }) {
         <div className="img_wrapper" >
           <img alt={weapon.name} className="image weapon" src={weapon.image_url} />
         </div>
+        <button onClick={() => props.history.goBack()}>Back</button>
       </div>
     </div>
   )

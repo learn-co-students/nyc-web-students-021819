@@ -1,4 +1,5 @@
 import React from 'react'
+import { Route, Switch } from 'react-router-dom'
 import './assets/App.css'
 import TurtleCarousel from "./containers/TurtleCarousel"
 import Home from "./containers/Home"
@@ -6,10 +7,11 @@ import NewTurtle from "./containers/NewTurtle"
 import Nav from "./components/Nav"
 import NinjaTurtles from "./components/NinjaTurtles"
 import Welcome from './components/Welcome'
+import Goof from './components/Goof'
 
 class App extends React.Component {
   state = {
-    page: "welcome",
+    // page: "welcome",
     turtles: [],
     user: {}
   }
@@ -32,11 +34,11 @@ class App extends React.Component {
     })
   }
 
-  changePage = (newPage) => {
-    this.setState({
-      page: newPage
-    })
-  }
+  // changePage = (newPage) => {
+  //   this.setState({
+  //     page: newPage
+  //   })
+  // }
 
   ninjifyTurtle = (turtleID) => {
     // turtleData => turtle object
@@ -77,28 +79,37 @@ class App extends React.Component {
     })
   }
 
-  renderPage = () => {
-    switch(this.state.page){
-      case "welcome":
-        return <Welcome />
-      case "home":
-        return <Home turtles={this.state.turtles}/>
-      case "find":
-        return <TurtleCarousel backToPond={this.backToPond} ninjifyTurtle={this.ninjifyTurtle} turtles={this.state.turtles} />
-      case "new":
-        return <NewTurtle addTurtle={this.addTurtle} />
-      case "ninjas":
-        return <NinjaTurtles turtles={this.state.turtles} ninjaTurtles={this.state.user.ninja_turtles} />
-      default:
-        return null
-    }
-  }
+  // renderPage = () => {
+  //   switch(this.state.page){
+  //     case "welcome":
+  //       return <Welcome />
+  //     case "home":
+  //       return <Home turtles={this.state.turtles}/>
+  //     case "find":
+  //       return <TurtleCarousel backToPond={this.backToPond} ninjifyTurtle={this.ninjifyTurtle} turtles={this.state.turtles} />
+  //     case "new":
+  //       return <NewTurtle addTurtle={this.addTurtle} />
+  //     case "ninjas":
+  //       return <NinjaTurtles turtles={this.state.turtles} ninjaTurtles={this.state.user.ninja_turtles} />
+  //     default:
+  //       return null
+  //   }
+  // }
 
   render(){
     return (
       <div className="App">
         <Nav changePage={this.changePage} />
-        {this.renderPage()}
+
+        <Switch>
+          <Route path='/ninja-turtles' render={(props) => <NinjaTurtles {...props} turtles={this.state.turtles} ninjaTurtles={this.state.user.ninja_turtles} />} />
+          <Route path='/new' render={() => <NewTurtle addTurtle={this.addTurtle} />} />
+          <Route path='/carousel' render={() => <TurtleCarousel backToPond={this.backToPond} ninjifyTurtle={this.ninjifyTurtle} turtles={this.state.turtles} />} />
+          <Route path='/turtles' render={() => <Home turtles={this.state.turtles}/> } />
+          <Route exact path='/' component={ Welcome } />
+          <Route component={ Goof } />
+        </Switch>
+        {/*this.renderPage()*/}
       </div>
     );
   }

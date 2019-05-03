@@ -14,6 +14,7 @@
 ## Server-side vs. Client-side Routing
 
 ### Server-side
+
 - Static routing
 - Any change in URL triggers request/response cycle
   - Request for new page from server
@@ -28,6 +29,7 @@
   - Slower & less seamless feel
 
 ### Client-side (React Router)
+
 - Single Page Application (SPA)
 - Dynamic routing
 - Changes in URL do not trigger a request to server. Instead, it is handled internally by JavaScript and changes the state of the app to render new views

@@ -1,11 +1,28 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Nav = (props) => (
   <div className="navbar">
-    <button onClick={() => props.changePage("home")} >Ninja Tinda</button>
-    <button onClick={() => props.changePage("find")}>Find Turtles</button>
-    <button onClick={() => props.changePage("ninjas")}>Your Ninjas</button>
-    <button onClick={() => props.changePage("new")}>Add a Turtle</button>
+    <button>
+      <Link to='/turtles'>
+        Ninja Tinda
+      </Link>
+    </button>
+    <button>
+      <Link to='/carousel'>
+        Find Turtles
+      </Link>
+    </button>
+    <button>
+      <Link to='/ninja-turtles'>
+        Your Ninjas
+      </Link>
+    </button>
+    <button>
+      <Link to='/new'>
+        Add a Turtle
+      </Link>
+    </button>
   </div>
 )
 
