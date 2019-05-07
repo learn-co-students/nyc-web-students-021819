@@ -1,5 +1,7 @@
 import React from 'react'
 import ProfileCard from "../components/ProfileCard"
+import withAds from '../HOCs/withAds'
+
 
 class TurtleCarousel extends React.Component {
 
@@ -90,4 +92,4 @@ document.addEventListener("click", (event) => {
   // whatever
 })
 
-export default TurtleCarousel
+export default withAds(TurtleCarousel)

@@ -1,7 +1,7 @@
 import React from 'react'
+import withAds from '../HOCs/withAds'
 
 const Welcome = (props) => {
-  console.log(props)
   return (
     <div className='flex-center'>
       <h1>Ninja Tinda</h1>
@@ -19,4 +19,4 @@ const Welcome = (props) => {
 
 }
 
-export default Welcome
+export default withAds(Welcome)

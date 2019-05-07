@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 class Search extends React.Component {
   handleChange = (event) => {
@@ -7,6 +8,7 @@ class Search extends React.Component {
 
 
   render(){
+    console.log(this.props)
     return(
       <form  >
         <input name="input" value={this.props.filterValue} onChange={this.handleChange} />
@@ -16,4 +18,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search
+export default withRouter(Search)

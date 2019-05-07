@@ -8,6 +8,10 @@ import Nav from "./components/Nav"
 import NinjaTurtles from "./components/NinjaTurtles"
 import Welcome from './components/Welcome'
 import Goof from './components/Goof'
+// import withBasic from './HOCs/withBasic'
+
+// const WrappedWelcome = withBasic(Welcome)
+// const WrappedGoof = withBasic(Goof)
 
 class App extends React.Component {
   state = {
