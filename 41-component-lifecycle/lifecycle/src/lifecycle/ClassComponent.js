@@ -4,7 +4,7 @@ class ClassComponent extends Component {
 
   constructor(props){
     super()
-    // console.log("Constructor: ", props.name )
+    console.log("Constructor: ", props.name )
     this.state = {beef: true}
   }
 
