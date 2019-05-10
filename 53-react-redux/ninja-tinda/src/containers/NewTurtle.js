@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 // https://pbs.twimg.com/media/DOtjU33V4AIguev.jpg
 
@@ -25,8 +26,18 @@ class NewTurtle extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+
+    fetch("http://localhost:3000/api/v1/turtles", {
+      method: "POST",
+      headers: {"Content-Type": "application/json", Accepts: "application/json"},
+      body: JSON.stringify(this.state)
+    })
+    .then(res => res.json())
+    .then(response => {
+      this.props.reduxAddTurtle(response)
+
+    })
     
-    this.props.addTurtle(this.state)
 
     this.setState({
       name: "",
@@ -61,4 +72,12 @@ class NewTurtle extends React.Component {
   }
 }
 
-export default NewTurtle
+function mapDispatchToProps(dispatch){
+  return {
+    reduxAddTurtle: (newTurtle) => {
+      dispatch({type: "ADD_TURTLE", payload: newTurtle})
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(NewTurtle)

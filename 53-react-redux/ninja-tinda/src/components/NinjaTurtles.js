@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, Switch, Route } from 'react-router-dom'
 import NinjaTurtleCard from "./NinjaTurtleCard"
 
+import { connect } from 'react-redux'
+
 class NinjaTurtles extends React.Component {
 
   // renderProfileCards(){
@@ -56,4 +58,10 @@ class NinjaTurtles extends React.Component {
   }
 }
 
-export default NinjaTurtles
+function mapStateToProps (state){
+  return {
+    turtles: state.turtles
+  }
+}
+
+export default connect(mapStateToProps)(NinjaTurtles)

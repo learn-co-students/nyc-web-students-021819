@@ -1,7 +1,7 @@
 import React from 'react'
 import ProfileCard from "../components/ProfileCard"
 import withAds from '../HOCs/withAds'
-
+import { connect } from 'react-redux'
 
 class TurtleCarousel extends React.Component {
 
@@ -88,8 +88,10 @@ class TurtleCarousel extends React.Component {
   }
 }
 
-document.addEventListener("click", (event) => {
-  // whatever
-})
+function mapStateToProps (state){
+  return {
+    turtles: state.turtles
+  }
+}
 
-export default withAds(TurtleCarousel)
+export default connect(mapStateToProps)(withAds(TurtleCarousel))

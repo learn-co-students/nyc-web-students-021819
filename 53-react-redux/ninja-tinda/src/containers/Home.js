@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react'
 import Search from "../components/Search"
+import { connect } from "react-redux"
 
 class Home extends React.Component {
 
@@ -42,4 +43,10 @@ class Home extends React.Component {
   }
 }
 
-export default Home
+function mapStateToProps (state){
+  return {
+    turtles: state.turtles
+  }
+}
+
+export default connect(mapStateToProps)(Home)
