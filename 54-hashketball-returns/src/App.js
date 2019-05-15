@@ -10,10 +10,10 @@ import { selectPlayer } from './actions'
 
 
 class App extends Component {
-  state = {
-    teams: gamesData.teams,
-    selectedPlayer: null
-  }
+  // state = {
+  //   teams: gamesData.teams,
+  //   selectedPlayer: null
+  // }
 
   // handleSelectPlayer = (player) => {
   //   this.setState({
